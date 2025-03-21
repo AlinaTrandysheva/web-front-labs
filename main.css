@@ -1,0 +1,24 @@
+body {
+    background-color: lightblue;
+    color: maroon;
+    font-family: Arial;
+    margin: 0px;
+}
+header {
+    background-color: LightCoral;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    background-color: LightGoldenRodYellow;
+    padding: 20px;
+    margin: 10px;
+}
+
+footer {
+    background-color: LightSlateGray;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
