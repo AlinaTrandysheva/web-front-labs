@@ -13,16 +13,20 @@ header {
 main {
     background-color: LightGoldenRodYellow;
     padding: 20px;
-    margin: 10px;
+    margin: 10px 20px 67px;
+
 }
 
 footer {
     background-color: LightSlateGray;
     padding: 10px;
+    font-size: 16pt;
     text-align: center;
     color: white;
-    font-size: 16pt;
     position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 a {
