@@ -21,6 +21,8 @@ footer {
     padding: 10px;
     text-align: center;
     color: white;
+    font-size: 16pt;
+    position: fixed;
 }
 
 a {
@@ -63,8 +65,8 @@ a:active {
 div.menu {
     border: 7px solid coral;
     border-radius: 5px;
-    width: 300 px;
-    margin: 0;
+    width: 300px;
+    margin: 0 auto;
 }
 
 div.menu:hover {
