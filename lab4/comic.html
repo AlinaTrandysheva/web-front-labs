@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трандышева Алина Константиновна. Лабораторная работа 4</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .comic-container {
+            position: relative;
+            width: 600px;
+            margin: 40px auto;
+            border: 6px solid #b4d2df;
+            background: #b4d2df;
+            overflow: visible;
+        }
+        .comic-img {
+            display: block;
+            width: 100%;
+        }
+        .cloud {
+            position: absolute;
+            background-color: #ffeefa;
+            color: #7e2e5f;
+            border: 2px solid #c07ce2;
+            border-radius: 50%;
+            box-shadow: 0 3px 12px #e5bdf9, 2px 2px 16px #babff3;
+            opacity: 0;
+            transition: opacity 0.4s, transform 0.5s;
+            pointer-events: none;
+        }
+        
+        .cloud1 { width:36px; height:36px; left:420px; top:265px; transition-delay: 0.1s;}
+        .cloud2 { width:48px; height:48px; left:470px; top:250px; transition-delay: 0.25s;}
+        .cloud3 { width:68px; height:68px; left:535px; top:230px; transition-delay: 0.45s;}
+        .cloud4 {
+            width:170px; height:80px; left:635px; top:210px;
+            border-radius: 50%;
+            color: #be2466;
+            font-size: 27px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 5px 10px;
+            text-shadow: 1px 1px 3px #fff, 0 0 2px #d6cadd;
+            transition-delay: 0.7s;
+}
+
+
+
+        .comic-container:hover .cloud1 { opacity:1; transform: scale(1.15);}
+        .comic-container:hover .cloud2 { opacity:1; transform: scale(1.08);}
+        .comic-container:hover .cloud3 { opacity:1; transform: scale(1.05);}
+        .comic-container:hover .cloud4 { opacity:1; transform: scale(1.0);}
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+    <main>
+        <div class="comic-container">
+            <img src="картинка.jpg" alt="комикс" class="comic-img">
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
+            <div class="cloud cloud4">Look!</div>
+        </div>
+    </main>
+    <footer>
+        &copy; Алина Трандышева, ФБИ-34, 2 курс, 2025
+    </footer>
+</body>
+</html>
+
