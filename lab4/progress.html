@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трандышева Алина Константиновна. Лабораторная работа 4</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .box {
+            text-align: center;
+            border: 4px solid #ff69b4;
+            border-radius: 24px;
+            width: 500px;
+            height: 300px;
+            background-color: #ffb3d9;
+            box-shadow: 0 2px 15px #ff8ecc54;
+            position: relative;
+        }
+
+        .box-text {
+            color: #800080;
+            font-size: 22pt;
+            margin-top: 23px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .progress-bar {
+            border: 4px dashed #d8bfd8;
+            width: 300px;
+            height: 32px;
+            background: #f8e8ff;
+            margin-bottom: 12px;
+            border-radius: 18px;
+            position: relative;
+            left: 100px;
+            top: 70px;
+            overflow: hidden;
+        }
+
+        #progressbar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #ff69b4 0%, #800080 100%);
+            transition: width 5s linear;
+        }
+
+        .main-button {
+            padding: 12px 28px;
+            background: #ff69b4;
+            color: white;
+            border-radius: 22px;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 2px 2px 8px #e04fac94;
+            transition: 0.2s;
+            position: relative;
+            top: 180px;
+            cursor: pointer;
+        }
+
+        .main-button:hover {
+            background: #f03392;
+            box-shadow: 4px 4px 16px #bc3782;
+        }
+
+        .main-button:active {
+            box-shadow: none;
+        }
+
+        .main-button:active + .progress-bar #progressbar {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+    <main>
+        <div class="box">
+            <div class="box-text">Cтепень прогресса</div>
+            <button class="main-button">Нажмите и удерживайте</button>
+            <div class="progress-bar">
+                <div id="progressbar"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; Трандышева Алина, ФБИ-34, 2 курс, 2025
+    </footer>
+</body>
+</html>
