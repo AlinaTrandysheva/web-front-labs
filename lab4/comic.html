@@ -9,13 +9,10 @@
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="icon" href="../favicon-32x32.png">
     <style>
-        .comic-container {
+        .comic {
             position: relative;
             width: 600px;
             margin: 40px auto;
-            border: 6px solid #b4d2df;
-            background: #b4d2df;
-            overflow: visible;
         }
         .comic-img {
             display: block;
@@ -32,7 +29,7 @@
             transition: opacity 0.4s, transform 0.5s;
             pointer-events: none;
         }
-        
+
         .cloud1 { width:36px; height:36px; left:420px; top:265px; transition-delay: 0.1s;}
         .cloud2 { width:48px; height:48px; left:470px; top:250px; transition-delay: 0.25s;}
         .cloud3 { width:68px; height:68px; left:535px; top:230px; transition-delay: 0.45s;}
@@ -50,12 +47,12 @@
             padding: 5px 10px;
             text-shadow: 1px 1px 3px #fff, 0 0 2px #d6cadd;
             transition-delay: 0.7s;
-}
+        }
 
-        .comic-container:hover .cloud1 { opacity:1; transform: scale(1.15);}
-        .comic-container:hover .cloud2 { opacity:1; transform: scale(1.08);}
-        .comic-container:hover .cloud3 { opacity:1; transform: scale(1.05);}
-        .comic-container:hover .cloud4 { opacity:1; transform: scale(1.0);}
+        .comic:hover .cloud1 { opacity:1; transform: scale(1.15);}
+        .comic:hover .cloud2 { opacity:1; transform: scale(1.08);}
+        .comic:hover .cloud3 { opacity:1; transform: scale(1.05);}
+        .comic:hover .cloud4 { opacity:1; transform: scale(1.0);}
     </style>
 </head>
 <body>
@@ -63,7 +60,7 @@
         НГТУ, ФБ, Лабораторная работа 4
     </header>
     <main>
-        <div class="comic-container">
+        <div class="comic">
             <img src="картинка.jpg" alt="комикс" class="comic-img">
             <div class="cloud cloud1"></div>
             <div class="cloud cloud2"></div>
