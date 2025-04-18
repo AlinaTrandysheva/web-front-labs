@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трандышева Алина Константиновна. Лабораторная работа 4</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        body {
+            background: #eaf3fb;
+        }
+        .tag-cloud {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 420px;
+            margin: 40px auto 0 auto;
+            overflow: hidden;
+        }
+        .tag {
+            position: absolute;
+            font-family: Arial;
+            cursor: pointer;
+            transition: 
+                font-size 0.24s,
+                box-shadow 0.2s,
+                z-index 0s,
+                transform 0.24s;
+            z-index: 1;
+            user-select: none;
+            opacity: 0.94;
+        }
+        .tag1 { left: 6%; top: 8%; color: #cb2d6f; font-size: 40px; transform: rotate(-11deg);}
+        .tag2 { left: 58%; top: 12%; color: #2dc3a3; font-size: 32px; transform: rotate(8deg);}
+        .tag3 { left: 25%; top: 30%; color: #f54e0e; font-size: 36px; transform: rotate(-5deg);}
+        .tag4 { left: 69%; top: 16%; color: #bc7f1b; font-size: 29px; transform: rotate(-17deg);}
+        .tag5 { left: 66%; top: 54%; color: #6a3ecb; font-size: 30px; transform: rotate(14deg);}
+        .tag6 { left: 40%; top: 22%; color: #edb500; font-size: 37px; transform: rotate(3deg);}
+        .tag7 { left: 82%; top: 14%; color: #111f50; font-size: 19px; transform: rotate(-12deg);}
+        .tag8 { left: 12%; top: 53%; color: #34a853; font-size: 22px; font-weight:bold; transform: rotate(-9deg);}
+        .tag9 { left: 23%; top: 68%; color: #ff70b3; font-size: 33px; transform: rotate(11deg);}
+        .tag10 { left: 6%; top: 75%; color: #6b4029; font-size: 26px; transform: rotate(9deg);}
+        .tag11 { left: 73%; top: 76%; color: #d41ce5; font-size: 27px; transform: rotate(-12deg);}
+        .tag12 { left: 46%; top: 66%; color: #1152B6; font-size: 40px; font-weight:bold; transform: rotate(-5deg);}
+        .tag13 { left: 57%; top: 85%; color: #e55b49; font-size: 20px; transform: rotate(6deg);}
+        .tag14 { left: 38%; top: 45%; color: #17482a; font-size: 25px; transform: rotate(15deg);}
+        .tag15 { left: 27%; top: 11%; color: #fff545; font-size: 28px; transform: rotate(-7deg);}
+        
+        .tag:hover {
+            font-size: 56px;
+            z-index: 100;
+            box-shadow: 0 6px 36px 5px rgba(40,40,70,0.3);
+            background: rgba(255,255,255,0.90);
+            padding: 5px 18px;
+            border-radius: 20px;
+            opacity: 1;
+            transform: scale(1.15) rotate(0deg);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+
+    <main>
+        <div class="tag-cloud">
+            <span class="tag tag1">экономика</span>
+            <span class="tag tag2">инфляция</span>
+            <span class="tag tag3">деньги</span>
+            <span class="tag tag4">банк</span>
+            <span class="tag tag5">кредит</span>
+            <span class="tag tag6">рынок</span>
+            <span class="tag tag7">валюта</span>
+            <span class="tag tag8">бюджет</span>
+            <span class="tag tag9">доход</span>
+            <span class="tag tag10">налоги</span>
+            <span class="tag tag11">прибыль</span>
+            <span class="tag tag12">инвестиции</span>
+            <span class="tag tag13">дефицит</span>
+            <span class="tag tag14">капитал</span>
+            <span class="tag tag15">акция</span>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Алина Трандышева, ФБИ-34, 2 курс, 2025
+    </footer>
+</body>
+</html>
