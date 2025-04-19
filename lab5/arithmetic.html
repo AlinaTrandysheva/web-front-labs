@@ -52,6 +52,44 @@
             alert(a + ' / ' + b + ' = ' + result);
         }
         
+        function showVozv() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+
+            if (isNaN(a)) {
+                alert("Введите числовое значение в первое поле");
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = "red";
+                inputA.style.borderColor = "red";
+                return;
+            }
+            if (isNaN(b)) {
+                alert("Введите числовое значение во второе поле");
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = "red";
+                inputB.style.borderColor = "red";
+                return;
+            }
+            if (a === 0 && b === 0) {
+                alert("Ошибка: оба значения равны нулю!");
+                inputA.style.color = "red";
+                inputA.style.borderColor = "red";
+                inputB.style.color = "red";
+                inputB.style.borderColor = "red";
+                return;
+            }
+            inputA.style.color = "";
+            inputA.style.borderColor = "";
+            inputB.style.color = "";
+            inputB.style.borderColor = "";
+            let result = a**b;
+            alert(a + " в степени " + b + " = " + result);
+        }
+
 
         function showSum(){
             let inputA = document.getElementById('numberA');
@@ -134,6 +172,7 @@
         <div class="message" onclick="showProd()">Найти произведение</div>
         <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
         <div class="message" onclick="showDiv()">Найти отношение чисел</div>
+        <div class="message" onclick="showVozv()">Возвести число</div>
     </main>
 
     <footer ondblclick="showHello()">
