@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трандышева Алина Константиновна. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function calculateTotal() {
+            const roses = parseInt(document.getElementById("roses").value) || 0; 
+            const peonies = parseInt(document.getElementById("peonies").value) || 0;
+            const tulips = parseInt(document.getElementById("tulips").value) || 0;
+            const lilies = parseInt(document.getElementById("lilies").value) || 0;
+            const chrysanthemums = parseInt(document.getElementById("chrysanthemums").value) || 0;
+
+            const rosePrice = 150;
+            const peonyPrice = 200;
+            const tulipPrice = 100;
+            const lilyPrice = 250;
+            const chrysanthemumPrice = 120;
+
+            const total = (roses * rosePrice) + (peonies * peonyPrice) + (tulips * tulipPrice) + (lilies * lilyPrice) + (chrysanthemums * chrysanthemumPrice);
+
+            const totalElement = document.getElementById("total");
+            totalElement.innerText = "Общая стоимость: " + total + " р";
+            totalElement.style.display = "block"; 
+        }
+
+        function clearCart() {
+            document.getElementById("roses").value = '';
+            document.getElementById("peonies").value = '';
+            document.getElementById("tulips").value = '';
+            document.getElementById("lilies").value = '';
+            document.getElementById("chrysanthemums").value = '';
+            document.getElementById("total").style.display = "none"; 
+        }
+    </script>
+    
+    <style>
+        .cart {
+            width: 350px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 20px auto;
+        }
+
+        .cart label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .cart input[type="number"] {
+            width: 150px;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .cart button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .cart p {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+        <hr>
+    </header>
+
+    <main>
+        <div class="cart">
+            <h2>Цветочный магазин</h2>
+
+            <label for="roses">Розы (150р/шт):
+                <input type="number" id="roses" min="0" placeholder="Введите количество">
+            </label>
+
+            <label for="peonies">Пионы (200р/шт):
+                <input type="number" id="peonies" min="0" placeholder="Введите количество">
+            </label>
+
+            <label for="tulips">Тюльпаны (100р/шт):
+                <input type="number" id="tulips" min="0" placeholder="Введите количество">
+            </label>
+
+            <label for="lilies">Лилии (250р/шт):
+                <input type="number" id="lilies" min="0" placeholder="Введите количество">
+            </label>
+
+            <label for="chrysanthemums">Хризантемы (120р/шт):
+                <input type="number" id="chrysanthemums" min="0" placeholder="Введите количество">
+            </label>
+
+            <button onclick="calculateTotal()">Рассчитать</button>
+            <button onclick="clearCart()">Очистить</button>
+
+            <p id="total" style="display: none;">Общая стоимость: 0 р</p>
+        </div>
+    </main>
+
+    <footer>
+        <hr>
+        &copy; Алина Трандышева, ФБИ-34, 2 курс, 2025
+    </footer>
+
+</body>
+</html>
