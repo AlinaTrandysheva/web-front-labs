@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трандышева Алина Константиновна. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        #imageContainer {
+            position: relative;
+            width: 500px;
+            margin: 20px auto;
+        }
+
+        #image {
+            width: 100%;
+            display: block;
+        }
+
+        #filterInfo {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+        <hr>
+    </header>
+
+    <main>
+        <p>При наведении будет работать фильтр blur.</p>
+        <p>При нажатой клавише Ctrl - фильтр grayscale</p>
+        <p>При нажатой клавише Alt - фильтр hue-rotate</p>
+        <p>При нажатой клавише Shift - фильтр brightness</p>
+
+        <div id="imageContainer">
+            <img id="image" src="карт.webp">
+            <div id="filterInfo">Фильтр: blur (0px)</div>
+        </div>
+    </main>
+
+    <footer>
+        <hr>
+        &copy; Алина Трандышева, ФБИ-34, 2 курс, 2025
+    </footer>
+
+    <script>
+        const image = document.getElementById('image');
+        const imageContainer = document.getElementById('imageContainer');
+        const filterInfo = document.getElementById('filterInfo');
+
+        imageContainer.addEventListener('mousemove', function (event) {
+            const imageWidth = image.offsetWidth;
+            const mouseX = event.clientX - imageContainer.offsetLeft;
+
+            const maxBlur = 20;
+            const maxGrayscale = 100;
+            const maxHueRotate = 360;
+            const maxBrightness = 500;
+
+            let blurValue = (mouseX / imageWidth) * maxBlur;
+            let grayscaleValue = (mouseX / imageWidth) * maxGrayscale;
+            let hueRotateValue = (mouseX / imageWidth) * maxHueRotate;
+            let brightnessValue = (mouseX / imageWidth) * maxBrightness;
+
+            if (event.ctrlKey) {
+                image.style.filter = 'grayscale(' + grayscaleValue + '%)';
+                filterInfo.textContent = 'Фильтр: grayscale(' + Math.round(grayscaleValue) + '%)';
+            } else if (event.altKey) {
+                image.style.filter = 'hue-rotate(' + hueRotateValue + 'deg)';
+                filterInfo.textContent = 'Фильтр: hue-rotate(' + Math.round(hueRotateValue) + 'deg)';
+            } else if (event.shiftKey) {
+                image.style.filter = 'brightness(' + brightnessValue + '%)';
+                filterInfo.textContent = 'Фильтр: brightness(' + Math.round(brightnessValue) + '%)';
+            } else {
+                image.style.filter = 'blur(' + blurValue + 'px)';
+                filterInfo.textContent = 'Фильтр: blur(' + Math.round(blurValue) + 'px)';
+            }
+
+        });
+
+        imageContainer.addEventListener('mouseleave', function () {
+            image.style.filter = 'none';
+            filterInfo.textContent = 'Фильтр: none';
+        });
+    </script>
+
+</body>
+
+</html>
