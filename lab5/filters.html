@@ -39,7 +39,17 @@
             document.getElementById("hueImage").style.filter = 'hue-rotate(' + value + ')';
         }
 
-        
+        function invertChange() {
+            let value = document.getElementById('invertValue').value + '%';
+            document.getElementById('invertOutput').innerText = value;
+            document.getElementById("invertImage").style.filter = 'invert(' + value + ')';
+        }
+
+        function invertChange() {
+            let value = document.getElementById('invertValue').value + '%';
+            document.getElementById('invertOutput').innerText = value;
+            document.getElementById("invertImage").style.filter = 'invert(' + value + ')';
+        }
 
     </script>
       
@@ -85,6 +95,13 @@
             <span id="hueOutput">0deg</span>
         </div>
         <div><img src='карт.webp' id="hueImage" style="max-width: 800px; width: 100%; height: auto;"></div>
+
+        <div>
+            Фильтр invert:
+            <input type="range" min="0" max="100" value="0" onchange="invertChange()" id="invertValue">
+            <span id="invertOutput">0%</span>
+        </div>
+        <div><img src='карт.webp' id="invertImage" style="max-width: 800px; width: 100%; height: auto;"></div>
 
 
 
