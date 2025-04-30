@@ -51,6 +51,12 @@
             document.getElementById("invertImage").style.filter = 'invert(' + value + ')';
         }
 
+        function saturateChange() {
+            let value = document.getElementById('saturateValue').value + '%';
+            document.getElementById('saturateOutput').innerText = value;
+            document.getElementById("saturateImage").style.filter = 'saturate(' + value + ')';
+        }
+
     </script>
       
 </head>
@@ -103,9 +109,15 @@
         </div>
         <div><img src='карт.webp' id="invertImage" style="max-width: 800px; width: 100%; height: auto;"></div>
 
+        <div>
+            Фильтр saturate
+            <input type="range" min="0" max="500" value="100" onchange="saturateChange()" id="saturateValue">
+            <span id="saturateOutput">100%</span>
+        </div>
+        <div>
+            <img src='карт.webp' id="saturateImage" style="max-width: 800px; width: 100%; height: auto;">
+        </div>
 
-
-        
     
     </main>
 
