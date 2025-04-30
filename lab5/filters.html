@@ -33,6 +33,14 @@
             document.getElementById("grayscaleImage").style.filter = 'grayscale(' + value + ')';
         }
 
+        function hueRotateChange() {
+            let value = document.getElementById('hueValue').value + 'deg';
+            document.getElementById('hueOutput').innerText = value;
+            document.getElementById("hueImage").style.filter = 'hue-rotate(' + value + ')';
+        }
+
+        
+
     </script>
       
 </head>
@@ -58,18 +66,25 @@
         <div><img src='карт.webp' id="brightnessImage" style="max-width: 800px; width: 100%; height: auto;"></div>
 
         <div>
-            Фильтр contrast
+            Фильтр contrast:
             <input type="range" min="0" max="500" value="100" onchange="contrastChange()" id="contrastValue">
             <span id="contrastOutput">100%</span>
         </div>
         <div><img src='карт.webp' id="contrastImage" style="max-width: 800px; width: 100%; height: auto;"></div>
 
         <div>
-            Фильтр grayscale
+            Фильтр grayscale:
             <input type="range" min="0" max="100" value="0" onchange="grayscaleChange()" id="grayscaleValue">
             <span id="grayscaleOutput">0%</span>
         </div>
         <div><img src='карт.webp' id="grayscaleImage" style="max-width: 800px; width: 100%; height: auto;"></div>
+
+        <div>
+            Фильтр hue-rotate:
+            <input type="range" min="0" max="360" value="0" onchange="hueRotateChange()" id="hueValue">
+            <span id="hueOutput">0deg</span>
+        </div>
+        <div><img src='карт.webp' id="hueImage" style="max-width: 800px; width: 100%; height: auto;"></div>
 
 
 
