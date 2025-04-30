@@ -57,6 +57,12 @@
             document.getElementById("saturateImage").style.filter = 'saturate(' + value + ')';
         }
 
+        function sepiaChange() {
+            let value = document.getElementById('sepiaValue').value + '%';
+            document.getElementById('sepiaOutput').innerText = value;
+            document.getElementById("sepiaImage").style.filter = 'sepia(' + value + ')';
+        }
+
     </script>
       
 </head>
@@ -110,13 +116,18 @@
         <div><img src='карт.webp' id="invertImage" style="max-width: 800px; width: 100%; height: auto;"></div>
 
         <div>
-            Фильтр saturate
+            Фильтр saturate:
             <input type="range" min="0" max="500" value="100" onchange="saturateChange()" id="saturateValue">
             <span id="saturateOutput">100%</span>
         </div>
+        <div><img src='карт.webp' id="saturateImage" style="max-width: 800px; width: 100%; height: auto;"></div>
+
         <div>
-            <img src='карт.webp' id="saturateImage" style="max-width: 800px; width: 100%; height: auto;">
+            Фильтр sepia:
+            <input type="range" min="0" max="100" value="0" onchange="sepiaChange()" id="sepiaValue">
+            <span id="sepiaOutput">0%</span>
         </div>
+        <div><img src='карт.webp' id="sepiaImage" style="max-width: 800px; width: 100%; height: auto;"></div>
 
     
     </main>
