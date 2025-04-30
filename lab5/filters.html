@@ -20,6 +20,12 @@
             document.getElementById('brightnessOutput').innerText = value;
             document.getElementById("brightnessImage").style.filter = 'brightness(' + value + ')';
         }
+        
+        function contrastChange() {
+            let value = document.getElementById('contrastValue').value + '%';
+            document.getElementById('contrastOutput').innerText = value;
+            document.getElementById("contrastImage").style.filter = 'contrast(' + value + ')';
+        }
     </script>
       
 </head>
@@ -38,13 +44,20 @@
         <div><img src='карт.webp' id="blurImage" style="max-width: 800px; width: 100%; height: auto;"></div>
         
         <div>
-            Фильтр brightness
+            Фильтр brightness:
             <input type="range" min="0" max="500" value="100" onchange="brightnessChange()" id="brightnessValue">
             <span id="brightnessOutput">100%</span>
         </div>
+        <div><img src='карт.webp' id="brightnessImage" style="max-width: 800px; width: 100%; height: auto;"></div>
+
         <div>
-            <img src='карт.webp' id="brightnessImage" style="max-width: 800px; width: 100%; height: auto;">
+            Фильтр contrast
+            <input type="range" min="0" max="500" value="100" onchange="contrastChange()" id="contrastValue">
+            <span id="contrastOutput">100%</span>
         </div>
+        <div><img src='карт.webp' id="contrastImage" style="max-width: 800px; width: 100%; height: auto;"></div>
+
+        
     
     </main>
 
