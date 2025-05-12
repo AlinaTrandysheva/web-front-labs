@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Трандышева Алина Константиновна. Лабораторная 6</title>
-    <link rel="stylesheet" href="../main.css"> 
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <link rel="icon" href="../favicon-16x16.png">
-    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="stylesheet" href="../main.css" />
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../favicon-16x16.png" />
+    <link rel="icon" href="../favicon-32x32.png" />
 
     <style>
         header {
             transition: color 0.8s ease; 
         }
+
         #dates {
             font-family: Arial;
             margin: 20px auto;
@@ -26,15 +27,23 @@
         .locale span {
             font-weight: bold;
         }
+
+        button {
+            margin: 5px;
+        }
     </style>
 
     <script>
-        function showDate() {
+        let dateTimer; 
+
+        function updateDate() {
             const now = new Date();
             const output = document.getElementById("current-date");
+            output.innerHTML = `<b>Текущая дата и время:</b> ${now.toLocaleString('ru-RU')}`;
+        }
 
-            output.innerHTML = `<b>Текущая дата:</b> ${now.toLocaleDateString('ru-RU')}`;
-
+        function showLocales() {
+            const now = new Date();
             const locales = [
                 { code: 'en-US', label: 'США (en-US)' },
                 { code: 'de-DE', label: 'Германия (de-DE)' },
@@ -45,13 +54,27 @@
             ];
 
             let list = '';
-
             for (let loc of locales) {
                 const dateStr = now.toLocaleString(loc.code);
                 list += `<div class="locale"><span>${loc.label}:</span> ${dateStr}</div>`;
             }
-
             document.getElementById("dates").innerHTML = list;
+        }
+
+        function startTimeUpdates() {
+            updateDate(); // 
+            dateTimer = setInterval(() => {
+                updateDate();
+                showLocales();
+            }, 1000); 
+            document.getElementById("start-time").disabled = true;
+            document.getElementById("stop-time").disabled = false;
+        }
+
+        function stopTimeUpdates() {
+            clearInterval(dateTimer); 
+            document.getElementById("start-time").disabled = false;
+            document.getElementById("stop-time").disabled = true;
         }
 
         function changeColors() {
@@ -60,46 +83,56 @@
             header.style.color = rgb;
         }
 
-        let timerNum;
+        let colorTimer; 
 
         function startChangeColors() {
             changeColors();
-            timerNum = setInterval(changeColors, 600);
+            colorTimer = setInterval(changeColors, 700); 
             document.getElementById("start-btn").disabled = true;
-            document.getElementById("stop-btn").disabled = false; 
+            document.getElementById("stop-btn").disabled = false;
         }
 
         function stopChangeColors() {
-            clearInterval(timerNum);
+            clearInterval(colorTimer);
             document.getElementById("start-btn").disabled = false;
             document.getElementById("stop-btn").disabled = true;
         }
 
+        function onPageLoad() {
+            updateDate();    
+            showLocales();    
+        }
     </script>
 </head>
-<body onload="showDate()">
+
+<body onload="onPageLoad()">
     <header>
         НГТУ, ФБ, Лабораторная работа 6
-        <hr>
+        <hr />
     </header>
 
     <main>
         <h2>Текущая дата и время</h2>
         <div id="current-date"></div>
 
-
         <h3>Дата и время в разных странах:</h3>
         <div id="dates"></div>
 
         <div>
-            <button onclick="startChangeColors()" id="start-btn">Старт</button>
-            <button onclick="stopChangeColors()" disabled id="stop-btn" disabled>Стоп</button>
+            <button onclick="startTimeUpdates()" id="start-time">Обновлять время</button>
+            <button onclick="stopTimeUpdates()" id="stop-time" disabled>Остановить обновление</button>
         </div>
 
+        <br />
+
+        <div>
+            <button onclick="startChangeColors()" id="start-btn">Старт цвета</button>
+            <button onclick="stopChangeColors()" id="stop-btn" disabled>Стоп цвета</button>
+        </div>
     </main>
 
     <footer>
-        <hr>
+        <hr />
         &copy; Алина Трандышева, ФБИ-34, 2 курс, 2025
     </footer>
 </body>
