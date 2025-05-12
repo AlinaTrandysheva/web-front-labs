@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Трандышева Алина. Лабораторная 6</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #fce4ec; 
+      padding: 20px;
+      color: #4a148c;
+    }
+
+    header h2 {
+      color: #6a1b9a;
+    }
+
+    #chart-container {
+      background: #f8bbd0;
+      border: 2px solid #ce93d8;
+      padding: 15px;
+      margin: 0 auto 20px;
+      width: fit-content;
+    }
+
+    #chart {
+      display: flex;
+      align-items: flex-end;
+      height: 400px; 
+      gap: 6px;
+    }
+
+    .bar {
+      width: 24px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .min-part {
+      background-color: #8e24aa; 
+      width: 100%;
+      color: white;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .range-part {
+      background-color: #f06292; 
+      width: 100%;
+      color: black;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bar.selected .min-part,
+    .bar.selected .range-part {
+      background-color: #ec407a; 
+      color: white;
+      font-weight: bold;
+    }
+
+    .day-label {
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    #controls {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    input {
+      padding: 4px;
+      width: 60px;
+    }
+
+    button {
+      padding: 6px 12px;
+      margin-left: 10px;
+      background: #ab47bc;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #8e24aa;
+    }
+
+    #info {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+      color: #880e4f;
+    }
+  </style>
+</head>
+<body onload="generateChart()">
+
+  <header>
+    <h2>Диаграмма температур за месяц</h2>
+    <hr>
+  </header>
+
+  <main>
+    <div id="chart-container">
+      <div id="chart"></div>
+    </div>
+
+    <div id="controls">
+      Номер дня: 
+      <input type="number" id="dayInput" min="1" max="30">
+      <button onclick="highlightDay()">Найти</button>
+    </div>
+
+    <div id="info"></div>
+  </main>
+
+
+  <script>
+    let temperatures = [];
+    let selectedBar = null;
+
+    function generateChart() {
+      const chart = document.getElementById("chart");
+      chart.innerHTML = '';
+      temperatures = [];
+
+      for (let i = 0; i < 30; i++) {
+        const min = Math.floor(Math.random() * 11) + 5;       
+        const max = min + Math.floor(Math.random() * 11) + 5; 
+        temperatures.push({ min, max });
+
+        const bar = document.createElement("div");
+        bar.className = "bar";
+        bar.dataset.index = i;
+
+        const minDiv = document.createElement("div");
+        minDiv.className = "min-part";
+        minDiv.style.height = (min * 8) + "px";
+        minDiv.innerText = `${min}°`;
+
+        const rangeDiv = document.createElement("div");
+        rangeDiv.className = "range-part";
+        rangeDiv.style.height = ((max - min) * 8) + "px"; 
+        rangeDiv.innerText = `${max}°`;
+
+        const dayLabel = document.createElement("div");
+        dayLabel.className = "day-label";
+        dayLabel.innerText = (i + 1).toString();
+
+        bar.appendChild(rangeDiv);
+        bar.appendChild(minDiv);
+        bar.appendChild(dayLabel);
+
+        chart.appendChild(bar);
+      }
+    }
+
+    function highlightDay() {
+      const input = document.getElementById("dayInput");
+      const day = parseInt(input.value);
+      const info = document.getElementById("info");
+
+      if (isNaN(day) || day < 1 || day > 30) {
+        info.textContent = "Введите номер дня от 1 до 30.";
+        return;
+      }
+
+      if (selectedBar) {
+        selectedBar.classList.remove("selected");
+      }
+
+      const bars = document.getElementsByClassName("bar");
+      const bar = bars[day - 1];
+      bar.classList.add("selected");
+      selectedBar = bar;
+
+      const temp = temperatures[day - 1];
+      info.innerHTML = `
+        <div>День ${day}</div>
+        <div>Мин. температура: ${temp.min}°C</div>
+        <div>Макс. температура: ${temp.max}°C</div>
+      `;
+    }
+  </script>
+</body>
+</html>
