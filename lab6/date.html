@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трандышева Алина Константиновна. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css"> 
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+
+    <style>
+        #dates {
+            font-family: Arial;
+            margin: 20px auto;
+            width: fit-content;
+        }
+
+        .locale {
+            margin-bottom: 8px;
+        }
+
+        .locale span {
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        function showDate() {
+            const now = new Date();
+            const output = document.getElementById("current-date");
+
+            output.innerHTML = `<b>Текущая дата:</b> ${now.toLocaleDateString('ru-RU')}`;
+
+            const locales = [
+                { code: 'en-US', label: 'США (en-US)' },
+                { code: 'de-DE', label: 'Германия (de-DE)' },
+                { code: 'fr-FR', label: 'Франция (fr-FR)' },
+                { code: 'ja-JP', label: 'Япония (ja-JP)' },
+                { code: 'ar-EG', label: 'Египет (ar-EG)' },
+                { code: 'zh-CN', label: 'Китай (zh-CN)' }
+            ];
+
+            let list = '';
+
+            for (let loc of locales) {
+                const dateStr = now.toLocaleString(loc.code);
+                list += `<div class="locale"><span>${loc.label}:</span> ${dateStr}</div>`;
+            }
+
+            document.getElementById("dates").innerHTML = list;
+        }
+    </script>
+</head>
+<body onload="showDate()">
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+        <hr>
+    </header>
+
+    <main>
+        <h2>Текущая дата и время</h2>
+        <div id="current-date"></div>йй
+        
+
+        <h3>Дата и время в разных странах:</h3>
+        <div id="dates"></div>
+
+    </main>
+
+    <footer>
+        <hr>
+        &copy; Алина Трандышева, ФБИ-34, 2 курс, 2025
+    </footer>
+</body>
+</html>
