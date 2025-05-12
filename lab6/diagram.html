@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трандышева Алина Константиновна. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css"> 
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    
+    <style>
+        #diag {
+            width: 500px;
+            height: 500px;
+            background-color: #d0ecf7;
+            border: 5px solid black;
+            padding: 10px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .bar {
+            width: 30px;
+            background-color: purple;
+            color: white;
+            text-align: center;
+            font-size: 12px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin: 0 2px;
+        }
+    </style>
+
+    <script>
+        function showDiagram() {
+            const data = [36, 13, 33, 77, 4, 5, 67, 99, 20, 8];
+            const colors = ['red', 'blue', 'purple', 'yellow', 'green', 'pink', 'grey', 'orange', '#00ff33', 'darkgreen'];
+            const bars = document.getElementsByClassName('bar');
+            const diagHeight = document.getElementById("diag").clientHeight;
+            const maxData = Math.max(...data);
+            const k = diagHeight / maxData * 0.9;
+
+            for (let i = 0; i < data.length; i++) {
+                bars[i].style.height = (k * data[i]) + 'px';
+                bars[i].style.backgroundColor = colors[i];
+                bars[i].innerText = data[i];
+            }
+        }
+    </script>
+</head>
+
+<body onload="showDiagram()">
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+        <hr>
+    </header>
+
+    <main>
+        <div id="diag">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </main>
+
+    <footer>
+        <hr>
+        &copy; Алина Трандышева, ФБИ-34, 2 курс, 2025
+    </footer>
+</body>
+</html>
