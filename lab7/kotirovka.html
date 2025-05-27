@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трандышева Алина Константиновна. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css"> 
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+
+    <style>
+        table {
+            border-collapse: collapse;
+            background-color: #cce5f0;
+            margin-top: 15px;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+            padding: 5px 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #b0d4e3;
+        }
+
+        .positive {
+            color: green;
+            font-weight: bold;
+        }
+
+        .negative {
+            color: red;
+            font-weight: bold;
+        }
+
+        .neutral {
+            color: black;
+            font-weight: bold;
+        }
+
+        #summary {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #4682B4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5a9bd5;
+        }
+    </style>
+
+    <script>
+        const dates = [
+            "16.05.2025", "19.05.2025", "20.05.2025", "21.05.2025", "22.05.2025",
+            "23.05.2025"
+        ];
+
+        const prices = [
+            103.6, 106.4, 105.14, 105.28, 103.18,
+            102.32
+        ];
+
+        function showStock() {
+            const container = document.getElementById('stock-table');
+            const summary = document.getElementById('summary');
+            container.innerHTML = '';
+            summary.innerHTML = '';
+
+            const table = document.createElement('table');
+            const header = document.createElement('tr');
+            header.innerHTML = '<th>Дата</th><th>Цена, руб</th><th>Изменение</th>';
+            table.appendChild(header);
+
+            for (let i = 0; i < prices.length; i++) {
+                const tr = document.createElement('tr');
+
+                const tdDate = document.createElement('td');
+                tdDate.textContent = dates[i];
+                tr.appendChild(tdDate);
+
+                const tdPrice = document.createElement('td');
+                tdPrice.textContent = prices[i];
+                tr.appendChild(tdPrice);
+
+                const tdDiff = document.createElement('td');
+                if (i === 0) {
+                    tdDiff.textContent = '—';
+                    tdDiff.className = 'neutral';
+                } else {
+                    const diff = prices[i] - prices[i - 1];
+                    const formattedDiff = diff.toFixed(1); 
+                    tdDiff.textContent = diff > 0 ? '+' + formattedDiff : formattedDiff;
+                    tdDiff.className =
+                        diff > 0 ? 'positive' :
+                        diff < 0 ? 'negative' :
+                        'neutral';
+                }
+
+                tr.appendChild(tdDiff);
+                table.appendChild(tr);
+            }
+
+            container.appendChild(table);
+
+            const sum = prices.reduce((a, b) => a + b, 0);
+            const average = (sum / prices.length).toFixed(0);
+            const max = Math.max(...prices);
+            const min = Math.min(...prices);
+
+            summary.innerHTML = `
+                <p>Среднее значение: <b>${average}</b> руб</p>
+                <p>Минимальное значение: <b>${min}</b> руб</p>
+                <p>Максимальное значение: <b>${max}</b> руб</p>
+            `;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+        <hr>
+    </header>
+
+    <main>
+        <button onclick="showStock()">Курс акций Softline</button>
+        <div id="stock-table"></div>
+        <div id="summary"></div>
+    </main>
+
+    <footer>
+        <hr>
+        &copy; Алина Трандышева, ФБИ-34, 2 курс, 2025
+    </footer>
+</body>
+</html>
