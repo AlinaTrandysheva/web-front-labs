@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс евро — Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+
+    <style>
+        #result {
+            margin: 20px auto;
+            padding: 15px;
+            border: 2px solid #888;
+            border-radius: 10px;
+            max-width: 400px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            background-color: #f0f8ff;
+        }
+        .up {
+            color: green;
+        }
+        .down {
+            color: red;
+        }
+    </style>
+
+    <script>
+        function getEuroExchangeRate() {
+            const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+            fetch(url)
+                .then(response => response.json())
+                .then(json => {
+                    const current = json.Valute.EUR.Value.toFixed(2);
+                    const previous = json.Valute.EUR.Previous.toFixed(2);
+                    const diff = (current - previous).toFixed(2);
+                    const trendText = current > previous ? 'поднялся' : (current < previous ? 'опустился' : 'не изменился');
+                    const trendClass = current > previous ? 'up' : (current < previous ? 'down' : '');
+
+                    const result = `
+                        <p><strong>Курс евро:</strong> ${current} руб.</p>
+                        <p><strong>Дата:</strong> ${json.Date.slice(0, 10)}</p>
+                        <p><strong>Предыдущий курс:</strong> ${previous} руб.</p>
+                        <p><strong>Разница:</strong> <span class="${trendClass}">${diff} руб. — курс ${trendText}</span></p>
+                    `;
+                    document.getElementById('result').innerHTML = result;
+                })
+                .catch(error => {
+                    document.getElementById('result').innerHTML = "<p style='color:red;'>Ошибка загрузки данных</p>";
+                    console.error('Ошибка при получении данных:', error);
+                });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+        <hr>
+    </header>
+
+    <main>
+        <h1>Курс евро</h1>
+        <button onclick="getEuroExchangeRate()">Узнать курс евро</button>
+        <div id="result"></div>
+
+        <p style="margin-top: 30px;">
+            Источник данных: 
+            <a href="https://www.cbr-xml-daily.ru/" target="_blank">
+                Курсы ЦБ РФ в XML и JSON, API
+            </a>
+        </p>
+    </main>
+
+    <footer>
+        <hr>
+        &copy; Алина Трандышева, ФБИ-34, 2 курс, 2025
+    </footer>
+</body>
+</html>
